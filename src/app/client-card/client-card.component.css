@@ -1,0 +1,43 @@
+.myCard{
+    width: inherit;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgb(0 0 0 / 10%);
+    color: rgb(155, 155, 155);
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+.spaceBtw{
+    justify-content: space-between;
+}
+.spaceStart{
+    justify-content: start;
+}
+.bg{
+    border-radius: 0.4rem;
+    padding: 0.2rem;
+    margin-right: 0.5rem;
+}
+.gray{
+    background-color: rgb(146, 146, 146);
+}
+.blue{
+    background-color:rgb(44, 111, 255);
+
+}
+.bg p{
+    margin: 0;
+    color: white;
+}
+p,
+h4{
+    margin: 0.2rem 0;
+}
+h4{
+    color: black;
+}
