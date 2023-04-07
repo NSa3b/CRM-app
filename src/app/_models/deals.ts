@@ -1,4 +1,4 @@
-export interface Deals{
+export interface Deal{
     id: number,
     first_name: string,
     last_name: string,
@@ -6,8 +6,8 @@ export interface Deals{
     phone: string,
     company: string,
     status: string,
-    date: Date,
-    probability_status: number,
+    date: string,
+    probability_status: string,
     state: string
 
 }

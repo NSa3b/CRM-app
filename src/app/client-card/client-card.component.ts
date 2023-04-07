@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Deal } from '../_models/deals';
 
 @Component({
   selector: 'app-client-card',
@@ -11,5 +12,18 @@ export class ClientCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Input() deal:Deal={
+    id: 0,
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    company: "",
+    status: "",
+    date: "",
+    probability_status: "",
+    state: ""
+  };
 
 }

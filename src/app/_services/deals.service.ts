@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Deals } from '../_models/deals';
+import { Deal } from '../_models/deals';
 
 
 @Injectable({
@@ -13,7 +13,11 @@ export class DealsService {
   baseUrl = environment.apiUrl;
 
   getAllDeals(){
-    this.http.get<Deals[]>(this.baseUrl);
+    return this.http.get<Deal[]>(this.baseUrl);
+  }
+
+  addDeal(model: Deal) {
+    return this.http.post(this.baseUrl + "/add",model);
   }
 
 }

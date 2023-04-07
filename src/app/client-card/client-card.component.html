@@ -1,22 +1,30 @@
-
 <div class="myCard">
     <div class="flex spaceBtw">
-        <h4>Agap Consultant</h4>
-        <a>...</a>
+        <h4>{{deal.company}}</h4>
+        <a>
+            <mat-icon *ngIf='deal.status=="Focus"'>hourglass_empty</mat-icon>
+            <mat-icon>more_horiz</mat-icon>
+        </a>
     </div>
     <div class="flex spaceStart">
-        <div class="bg gray"><p>Returning</p></div>
-        <div class="bg blue"><p>70%</p></div>
-    </div>
-    <div class="flex spaceStart">
-        <div>
-            <i></i>
-            <p>Noha Saab</p>
+        <div class="bg gray">
+            <p>{{deal.state}}</p>
         </div>
-        <p>01102073302</p>
+        <div *ngIf='deal.status!="Getting Ready"' mat-raised-button matTooltip="Probability status {{deal.probability_status}}" matTooltipPosition="above"
+            class="bg blue">
+            <p>{{deal.probability_status}}</p>
+        </div>
+    </div>
+    <div class="flex spaceBtw">
+        <mat-icon>call</mat-icon>
+        <p>{{deal.first_name +" "+ deal.last_name}}</p>
+        <p>{{deal.phone}}</p>
     </div>
     <div class="flex spaceStart">
-        <i></i>
-        <p>05.06.2019</p>
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{deal.date}}</p>
+    </div>
+    <div *ngIf='deal.status=="Getting Ready"' class="meter orange nostripes">
+        <span style="width: 70%"></span>
     </div>
 </div>

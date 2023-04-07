@@ -7,3 +7,17 @@ html,body{
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+.spaceBtw{
+    justify-content: space-between;
+}
+.spaceStart{
+    justify-content: start;
+}
+.spaceAround{
+    justify-content: space-around;
+}

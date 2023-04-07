@@ -1,108 +1,164 @@
-<div class="container">
-    <div class="pipelineStage">
-        <h3>Potential Value</h3>
+<section class="Deals">
+    <div class="flex spaceBtw">
+        <h2>Deals</h2>
         <div class="flex">
-            <div>
-                <i></i>
-                <p>30</p>
-            </div>
-            <div>
-                <i></i>
-                <p>3.23 min</p>
-            </div>
-            <div>
-                <i></i>
-                <p>2</p>
-            </div>
-        </div>
-        <div>
-            <app-client-card></app-client-card>
+            <form class="filters">
+                <mat-form-field appearance="fill">
+                    <mat-label>Segment</mat-label>
+                    <mat-select multiple>
+                        <mat-option>Segment A</mat-option>
+                        <mat-option>Segment B</mat-option>
+                        <mat-option>Segment C</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Assignee</mat-label>
+                    <mat-select multiple>
+                        <mat-option>Assignee A</mat-option>
+                        <mat-option>Assignee B</mat-option>
+                        <mat-option>Assignee C</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Status:All</mat-label>
+                    <mat-select (change)="onStatusSelect($event.target)" #Status multiple>
+                        <mat-option value="Potential Value">Potential Value</mat-option>
+                        <mat-option value="Focus">Focus</mat-option>
+                        <mat-option value="Contact Made">Contact Made</mat-option>
+                        <mat-option value="Offer Sent">Offer Sent</mat-option>
+                        <mat-option value="Getting Ready">Getting Ready</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Search by name or flag</mat-label>
+                    <mat-icon matPrefix>search</mat-icon>
+                    <input [(ngModel)]="searchValue" (input)="onSearch()" type="text" matInput>
+                </mat-form-field>
+
+                <input [(ngModel)]="searchValue" (input)="onSearch()" type="text">
+                <p>_____ {{searchValue}}</p>
+
+            </form>
+            <button mat-raised-button color="primary"><mat-icon>add_circle</mat-icon>ADD DEAL</button>
         </div>
     </div>
 
-    <div class="pipelineStage">
-        <h3>Focus</h3>
-        <div class="flex">
-            <div>
-                <i></i>
-                <p>30</p>
+
+    <div class="container" cdkDropListGroup>
+        <div class="pipelineStage">
+            <h3>Potential Value</h3>
+            <div class="flex spaceAround">
+                <div class="flex">
+                    <mat-icon>description</mat-icon>
+                    <p>{{ pvDeals.length }}</p>
+                </div>
+                <div mat-raised-button matTooltip="Total Potential Value... {{ pvDeals.length }} Deals"
+                    matTooltipPosition="above" class="flex">
+                    <mat-icon>badge</mat-icon>
+                    <p>3.23 min</p>
+                </div>
+                <div class="flex">
+                    <mat-icon>notifications</mat-icon>
+                    <p>0</p>
+                </div>
             </div>
-            <div>
-                <i></i>
-                <p>3.23 min</p>
-            </div>
-            <div>
-                <i></i>
-                <p>2</p>
+            <div cdkDropList [cdkDropListData]="pvDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
+                <app-client-card cdkDrag [cdkDragData]="deal" class="Deal-box" *ngFor="let deal of pvDeals"
+                    [deal]="deal"></app-client-card>
             </div>
         </div>
-        <div>
-            <app-client-card></app-client-card>
+
+        <div class="pipelineStage">
+            <h3>Focus</h3>
+            <div class="flex spaceAround">
+                <div class="flex">
+                    <mat-icon>description</mat-icon>
+                    <p>{{ FocusDeals.length }}</p>
+                </div>
+                <div mat-raised-button matTooltip="Total Potential Value... {{ FocusDeals.length }} Deals"
+                    matTooltipPosition="above" class="flex">
+                    <mat-icon>badge</mat-icon>
+                    <p>5.7 min</p>
+                </div>
+                <div class="flex">
+                    <mat-icon>notifications</mat-icon>
+                    <p>0</p>
+                </div>
+            </div>
+            <div cdkDropList [cdkDropListData]="FocusDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
+                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of FocusDeals"
+                    [deal]="deal"></app-client-card>
+            </div>
+        </div>
+
+        <div class="pipelineStage">
+            <h3>Contact Made</h3>
+            <div class="flex spaceAround">
+                <div class="flex">
+                    <mat-icon>description</mat-icon>
+                    <p>{{ ContDeals.length }}</p>
+                </div>
+                <div mat-raised-button matTooltip="Total Potential Value... {{ ContDeals.length }} Deals"
+                    matTooltipPosition="above" class="flex">
+                    <mat-icon>badge</mat-icon>
+                    <p>12.3 min</p>
+                </div>
+                <div class="flex">
+                    <mat-icon>notifications</mat-icon>
+                    <p>0</p>
+                </div>
+            </div>
+            <div cdkDropList [cdkDropListData]="ContDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
+                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of ContDeals"
+                    [deal]="deal"></app-client-card>
+            </div>
+        </div>
+
+        <div class="pipelineStage">
+            <h3>Offer Sent</h3>
+            <div class="flex spaceAround">
+                <div class="flex">
+                    <mat-icon>description</mat-icon>
+                    <p>{{ OfferDeals.length }}</p>
+                </div>
+                <div mat-raised-button matTooltip="Total Potential Value... {{ OfferDeals.length }} Deals"
+                    matTooltipPosition="above" class="flex">
+                    <mat-icon>badge</mat-icon>
+                    <p>1.7k</p>
+                </div>
+                <div class="flex">
+                    <mat-icon>notifications</mat-icon>
+                    <p>0</p>
+                </div>
+            </div>
+            <div cdkDropList [cdkDropListData]="OfferDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
+                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of OfferDeals"
+                    [deal]="deal"></app-client-card>
+            </div>
+        </div>
+
+        <div class="pipelineStage">
+            <h3>Getting Ready</h3>
+            <div class="flex spaceAround">
+                <div class="flex">
+                    <mat-icon>description</mat-icon>
+                    <p>{{ ReadyDeals.length }}</p>
+                </div>
+                <div mat-raised-button matTooltip="Total Potential Value... {{ ReadyDeals.length }} Deals"
+                    matTooltipPosition="above" class="flex">
+                    <mat-icon>badge</mat-icon>
+                    <p>23k</p>
+                </div>
+                <div class="flex">
+                    <mat-icon>notifications</mat-icon>
+                    <p>0</p>
+                </div>
+            </div>
+            <div cdkDropList [cdkDropListData]="ReadyDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
+                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of ReadyDeals"
+                    [deal]="deal"></app-client-card>
+            </div>
         </div>
     </div>
 
-    <div class="pipelineStage">
-        <h3>Contact Made</h3>
-        <div class="flex">
-            <div>
-                <i></i>
-                <p>30</p>
-            </div>
-            <div>
-                <i></i>
-                <p>3.23 min</p>
-            </div>
-            <div>
-                <i></i>
-                <p>2</p>
-            </div>
-        </div>
-        <div>
-            <app-client-card></app-client-card>
-        </div>
-    </div>
-
-    <div class="pipelineStage">
-        <h3>Offer Sent</h3>
-        <div class="flex">
-            <div>
-                <i></i>
-                <p>30</p>
-            </div>
-            <div>
-                <i></i>
-                <p>3.23 min</p>
-            </div>
-            <div>
-                <i></i>
-                <p>2</p>
-            </div>
-        </div>
-        <div>
-            <app-client-card></app-client-card>
-        </div>
-    </div>
-
-    <div class="pipelineStage">
-        <h3>Getting Ready</h3>
-        <div class="flex">
-            <div>
-                <i></i>
-                <p>30</p>
-            </div>
-            <div>
-                <i></i>
-                <p>3.23 min</p>
-            </div>
-            <div>
-                <i></i>
-                <p>2</p>
-            </div>
-        </div>
-        <div>
-            <app-client-card></app-client-card>
-        </div>
-    </div>
-
-</div>
-
+</section>
