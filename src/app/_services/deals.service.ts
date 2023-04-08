@@ -17,7 +17,15 @@ export class DealsService {
   }
 
   addDeal(model: Deal) {
-    return this.http.post(this.baseUrl + "/add",model);
+    return this.http.post(this.baseUrl + "deals/add",model);
+  }
+
+  updateDeal(dealId: number, model:Deal) {
+    return this.http.put(this.baseUrl + "deals/"+dealId,model);
+  }
+
+  deleteDeal(dealId: number) {
+    return this.http.delete(this.baseUrl + "deals/"+dealId);
   }
 
 }

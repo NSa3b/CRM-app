@@ -9,12 +9,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { DealsComponent } from './deals/deals.component';
 import { ClientCardComponent } from './client-card/client-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExhibitorsComponent } from './exhibitors/exhibitors.component';
+import { ProgramComponent } from './program/program.component';
+import { DelegatesComponent } from './delegates/delegates.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -24,7 +29,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     NavComponent,
     DealsComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    ExhibitorsComponent,
+    ProgramComponent,
+    DelegatesComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
 
    
     

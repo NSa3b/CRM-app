@@ -1,1 +1,70 @@
-<p>nav works!</p>
+<div class="nav">
+    <div class="headline">
+        <div class="flex">
+            <img src="/assets/imgs/Capture.JPG" alt="" width="48" height="32">
+            <h2 class="siteTitle">Nor-Shipping 2019</h2>
+        </div>
+        <div class="flex">
+            <div class="items flex">
+                <div class="item red">
+                    <p class="descr">DEALS</p>
+                    <h2>{{allDeals.length}}</h2>
+                </div>
+                <div class="item purple">
+                    <p class="descr">TOTAL VALUE [NOK]</p>
+                    <h2>14.19 mIn</h2>
+                </div>
+                <div class="item blue">
+                    <p class="descr">HITRATE</p>
+                    <h2>10%</h2>
+                </div>
+                <div class="item green">
+                    <p class="descr">DEALS WON</p>
+                    <h2>12/65</h2>
+                </div>
+                <div class="item orange">
+                    <p class="descr">NEW CLIENTS</p>
+                    <h2>8/12</h2>
+                </div>
+            </div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <img src="/assets/imgs/1761892.png" alt="" width="40" height="40">
+            </button>
+            <mat-menu #menu="matMenu">
+                <a mat-menu-item>
+                    <span>Settings</span>
+                </a>
+                <a mat-menu-item >
+                    <span>My Team</span>
+                </a>
+                <a mat-menu-item>
+                    <span>Log out</span>
+                </a>
+            </mat-menu>
+        </div>
+
+    </div>
+    <div class="navigation">
+        <a routerLink="/Exhibitors" routerLinkActive="active" class="flex route">
+            <mat-icon>table_rows</mat-icon>
+            <p>Exhibitors</p>
+        </a>
+        <a [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" class="flex route">
+            <mat-icon>shopping_basket</mat-icon>
+            <p>Sales</p>
+        </a>
+        <a routerLink="/Program" routerLinkActive="active" class="flex route">
+            <mat-icon> calendar_today</mat-icon>
+            <p>Program</p>
+        </a>
+        <a routerLink="/Delegates" routerLinkActive="active" class="flex route">
+            <mat-icon>contact_page</mat-icon>
+            <p>Delegates</p>
+        </a>
+        <a routerLink="/Settings" routerLinkActive="active" class="flex route">
+            <mat-icon>settings</mat-icon>
+            <p>Settings</p>
+        </a>
+
+    </div>
+</div>

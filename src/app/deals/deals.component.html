@@ -1,8 +1,20 @@
+<section class="subNav">
+    <a class="on">
+        <p>Deals</p>
+    </a>
+    <a class="sub">
+        <p>Activities</p>
+    </a>
+    <a class="sub">
+        <p>Statistics</p>
+    </a>
+
+</section>
 <section class="Deals">
     <div class="flex spaceBtw">
         <h2>Deals</h2>
-        <div class="flex">
-            <form class="filters">
+        <div class="navSearch">
+            <div class="filters">
                 <mat-form-field appearance="fill">
                     <mat-label>Segment</mat-label>
                     <mat-select multiple>
@@ -21,7 +33,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Status:All</mat-label>
-                    <mat-select (change)="onStatusSelect($event.target)" #Status multiple>
+                    <mat-select multiple>
                         <mat-option value="Potential Value">Potential Value</mat-option>
                         <mat-option value="Focus">Focus</mat-option>
                         <mat-option value="Contact Made">Contact Made</mat-option>
@@ -29,17 +41,19 @@
                         <mat-option value="Getting Ready">Getting Ready</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                <mat-form-field >
                     <mat-label>Search by name or flag</mat-label>
                     <mat-icon matPrefix>search</mat-icon>
-                    <input [(ngModel)]="searchValue" (input)="onSearch()" type="text" matInput>
+                    <input [(ngModel)]="searchValue" type="text" matInput>
                 </mat-form-field>
 
-                <input [(ngModel)]="searchValue" (input)="onSearch()" type="text">
-                <p>_____ {{searchValue}}</p>
+            </div>
+            <div>
+                <button><mat-icon>add_circle</mat-icon>ADD DEAL</button>
+            </div>
+            
 
-            </form>
-            <button mat-raised-button color="primary"><mat-icon>add_circle</mat-icon>ADD DEAL</button>
+       
         </div>
     </div>
 
@@ -62,9 +76,14 @@
                     <p>0</p>
                 </div>
             </div>
-            <div cdkDropList [cdkDropListData]="pvDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
-                <app-client-card cdkDrag [cdkDragData]="deal" class="Deal-box" *ngFor="let deal of pvDeals"
-                    [deal]="deal"></app-client-card>
+            <div cdkDropList [cdkDropListData]="pvDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
+                <div *ngFor="let deal of pvDeals">
+                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                        <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
+                        [deal]="deal"></app-client-card>
+                    </div>
+                </div>
+               
             </div>
         </div>
 
@@ -85,10 +104,15 @@
                     <p>0</p>
                 </div>
             </div>
-            <div cdkDropList [cdkDropListData]="FocusDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
-                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of FocusDeals"
-                    [deal]="deal"></app-client-card>
+            <div cdkDropList [cdkDropListData]="FocusDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
+                <div *ngFor="let deal of FocusDeals" >
+                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                        <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
+                        [deal]="deal"></app-client-card>
+                    </div>
+                </div>
             </div>
+          
         </div>
 
         <div class="pipelineStage">
@@ -108,9 +132,13 @@
                     <p>0</p>
                 </div>
             </div>
-            <div cdkDropList [cdkDropListData]="ContDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
-                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of ContDeals"
-                    [deal]="deal"></app-client-card>
+            <div cdkDropList [cdkDropListData]="ContDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
+                <div *ngFor="let deal of ContDeals" >
+                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                        <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
+                        [deal]="deal"></app-client-card>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -131,10 +159,15 @@
                     <p>0</p>
                 </div>
             </div>
-            <div cdkDropList [cdkDropListData]="OfferDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
-                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of OfferDeals"
-                    [deal]="deal"></app-client-card>
+            <div cdkDropList [cdkDropListData]="OfferDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
+                <div *ngFor="let deal of OfferDeals" >
+                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                        <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
+                        [deal]="deal"></app-client-card>
+                    </div>
+                </div>
             </div>
+
         </div>
 
         <div class="pipelineStage">
@@ -154,11 +187,22 @@
                     <p>0</p>
                 </div>
             </div>
-            <div cdkDropList [cdkDropListData]="ReadyDeals" class="Deal-list" (cdkDropListDropped)="move($event)">
-                <app-client-card cdkDrag class="Deal-box" *ngFor="let deal of ReadyDeals"
-                    [deal]="deal"></app-client-card>
+            <div cdkDropList [cdkDropListData]="ReadyDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
+                <div *ngFor="let deal of ReadyDeals" >
+                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                        <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
+                        [deal]="deal"></app-client-card>
+                    </div>
+                </div>
             </div>
         </div>
+        <div *ngIf="showDeletBtn" class="flex deleteBtn">
+            <mat-icon>delete</mat-icon>
+            <p>Delete card</p>
+        </div>
     </div>
+
+      
+ 
 
 </section>

@@ -1,0 +1,132 @@
+
+.headline {
+    padding: 0.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.05rem solid rgb(221, 221, 221);
+}
+.siteTitle {
+    margin: 0 1rem;
+}
+p {
+    margin: 0 0.1rem;
+}
+.item {
+    text-align: start;
+    position: relative;
+    margin-right: 2rem;
+    font-size: smaller;
+}
+.item::before {
+    content: "";
+    position: absolute;
+    width: 0.2rem;
+    height: 2.5rem;
+    top: 10%;
+    right: 105%;
+}
+.red::before {
+    background-color: red;
+}
+.purple::before {
+    background-color: rgb(104, 34, 161);
+}
+.blue::before {
+    background-color: rgb(50, 172, 248);
+}
+.green::before {
+    background-color: rgb(77, 184, 45);
+}
+.orange::before {
+    background-color: rgb(222, 103, 24);
+}
+.item h2 {
+    margin: 0;
+}
+.descr {
+    margin: 0;
+    color: rgb(168, 168, 173);
+    font-size: smaller;
+}
+.navigation {
+    padding: 0 5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    font-size: smaller;
+}
+.route{
+    color: rgb(168, 168, 173);
+}
+.active{
+    color:rgb(36, 36, 155) ;
+    position: relative;
+}
+.active::before{
+    content: "";
+    position: absolute;
+    height: 0.15rem;
+    width: 4.5rem;
+    top: 178%;;
+    right: -5%;
+    background-color:rgb(36, 36, 155) ;
+}
+.flex {
+    margin-right: 2rem;
+    text-decoration: none;
+}
+mat-icon {
+    font-size: 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+    .navigation{
+        padding:0 1rem ;
+        font-size: x-small;
+        flex-wrap: wrap;
+    }
+    .active::before{
+        content: "";
+        position: absolute;
+        height: 0;
+        width: 0;
+    }
+    .headline{
+        padding:0 1rem ;
+        font-size: x-small;
+        flex-wrap: wrap;
+
+    }
+    .items{
+        flex-wrap: wrap;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 768px and down) */
+@media (min-width: 600px) and (max-width: 768px) {
+    .navigation{
+        padding:0 1rem ;
+        font-size: x-small;
+        flex-wrap: wrap;
+    }
+    .active::before{
+        content: "";
+        position: absolute;
+        height: 0;
+        width: 0;
+    }
+    .headline{
+        padding:0 1rem ;
+        font-size: x-small;
+        flex-wrap: wrap;
+
+    }
+    .items{
+        flex-wrap: wrap;
+    }
+}

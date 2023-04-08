@@ -1,8 +1,8 @@
-import { Component, OnInit,ElementRef,ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ClientCardComponent } from '../client-card/client-card.component';
 import { Deal } from '../_models/deals';
 import { DealsService } from '../_services/deals.service';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-deals',
@@ -17,7 +17,7 @@ export class DealsComponent implements OnInit {
     this.loadDeals();
   }
 
-  Deal:Deal={
+  Deal: Deal = {
     id: 0,
     first_name: "",
     last_name: "",
@@ -30,9 +30,6 @@ export class DealsComponent implements OnInit {
     state: ""
   }
 
-
-
-
   allDeals: Deal[] = [];
 
   pvDeals: Deal[] = [];
@@ -41,47 +38,51 @@ export class DealsComponent implements OnInit {
   OfferDeals: Deal[] = [];
   ReadyDeals: Deal[] = [];
 
+  showDeletBtn: boolean = false;
+  searchValue: string = "";
+
   loadDeals() {
     this.dealsService.getAllDeals().subscribe((response: any) => {
-      console.log(response.deals);
       this.allDeals = response.deals;
-
-      this.pvDeals = this.allDeals.filter((deal) => deal.status == "Potential Value");
-      this.FocusDeals = this.allDeals.filter((deal) => deal.status == "Focus");
-      this.ContDeals = this.allDeals.filter((deal) => deal.status == "Contact Made");
-      this.OfferDeals = this.allDeals.filter((deal) => deal.status == "Offer Sent");
-      this.ReadyDeals = this.allDeals.filter((deal) => deal.status == "Getting Ready");
+      this.filterDeals()
     })
   }
 
-  move(event: CdkDragDrop<Deal[]>) {
+  filterDeals() {
+    this.pvDeals = this.allDeals.filter((deal) => deal.status == "Potential Value");
+    this.FocusDeals = this.allDeals.filter((deal) => deal.status == "Focus");
+    this.ContDeals = this.allDeals.filter((deal) => deal.status == "Contact Made");
+    this.OfferDeals = this.allDeals.filter((deal) => deal.status == "Offer Sent");
+    this.ReadyDeals = this.allDeals.filter((deal) => deal.status == "Getting Ready");
+  }
+
+  moveDeal(event: CdkDragDrop<Deal[]>) {
+    this.showDeletBtn = false;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+    } 
+    else {
+      transferArrayItem(event.previousContainer.data, event.container.data,event.previousIndex,event.currentIndex);
+      
+      switch (event.container.id) {
+        case "cdk-drop-list-0": event.container.data[event.currentIndex].status = "Potential Value"
+          break;
+        case "cdk-drop-list-1": event.container.data[event.currentIndex].status = "Focus"
+          break;
+        case "cdk-drop-list-2": event.container.data[event.currentIndex].status = "Contact Made"
+          break;
+        case "cdk-drop-list-3": event.container.data[event.currentIndex].status = "Offer Sent"
+          break;
+        case "cdk-drop-list-4": event.container.data[event.currentIndex].status = "Getting Ready"
+          break;
+      }
 
     }
   }
 
-  searchValue:string="";
-  
-  onSearch(){
-    console.log(this.searchValue);
-
+  onDragStart() {
+    this.showDeletBtn = true;
   }
-
- 
-
-  onStatusSelect(event:any){
-    console.log(event);
-  }
-
-
 
 
 }

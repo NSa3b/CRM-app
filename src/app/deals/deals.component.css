@@ -1,8 +1,30 @@
 .Deals{
   margin: 0 5rem;
 }
-
+.subNav{
+  background-color: rgb(237, 238, 241);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5rem;
+  margin-bottom: 2.5rem;
+  height: 2.8rem;
+  font-size: smaller;
+}
+.sub{
+  margin-right: 2rem;
+  color: rgb(138, 138, 138);
+}
+.on{
+  margin-right: 2rem;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  background-color: white;
+  color: black;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.203);
+}
 .container {
+  position: relative;
   margin: 0.5rem 0;
   font-size: small;
   display: grid;
@@ -10,19 +32,21 @@
   grid-auto-rows: minmax(200px, auto);
   grid-gap: 1rem;
 }
-
+.navSearch{
+  display: flex;
+  align-items: center;
+}
 .pipelineStage {
-  background-color: rgb(235, 236, 241);
+  background-color: rgb(237, 238, 241);
   border-radius: 0.5rem;
-  padding: 0.3rem;
-  height: 100vh;
+  padding: 0.2rem;
+  height: 80vh;
 }
 h3,
 h2{
   margin: 0.5rem;
   font-weight:500;
 }
-
 p{
   margin: 0;
 }
@@ -36,77 +60,101 @@ p{
               0 8px 10px 1px rgba(0, 0, 0, 0.14),
               0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
-
 .cdk-drag-placeholder {
   opacity: 0;
 }
-
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-
+.Deal-list {
+  height: 100%;
+  /*border: 0.1rem red solid; */
+}
 .Deal-box {
   cursor: move;
 }
-
 .Deal-box:last-child {
   border: none;
 }
-
 .Deal-list.cdk-drop-list-dragging .Deal-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-
-
 mat-icon{
   margin-right: 0.3rem ;
   font-size: 1rem;
   height: 1rem;
   width: 1rem;
 }
-
 mat-form-field{
   width:10rem;
   font-size: x-small;
   margin: 0 0.2rem;
 }
-
 .filters{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-
   margin-right: 1rem;
 }
-
-
-/* For Tablet View */
-@media screen and (min-device-width: 768px)
-and (max-device-width: 1024px) {
-
+.deleteBtn{
+  position: absolute;
+  top: 80%;
+  right: -8%;
+  padding: 1rem 4rem;
+  background-color: rgb(255, 215, 215);
+  border: 0.2rem rgb(255, 159, 159) dotted;
+  border-radius: 0.2rem;
+  color: rgb(219, 75, 75) ;
+}
+button{
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  background-color:rgb(36, 36, 155)!important;
+  font-size: smaller;
+  padding: 1rem;
 }
 
-/* For Mobile Portrait View */
-@media screen and (max-device-width: 480px)
-and (orientation: portrait) {
+
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
   .container {
     grid-template-columns: 1fr 1fr;
   }
   .filters{
     grid-template-columns: 1fr 1fr;
   }
+  mat-form-field{
+    width:5rem;
+  }
+  .Deals{
+    margin: 0 1rem;
+  }
+  .subNav{
+    padding: 0 2rem;
+  }
 
 }
- 
-/* For Mobile Landscape View */
-@media screen and (max-device-width: 640px)
-and (orientation: landscape) {
+
+/* Small devices (portrait tablets and large phones, 768px and down) */
+@media (min-width: 600px) and (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   .filters{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
-
+  mat-form-field{
+    width:8rem;
+  }
+  .Deals{
+    margin: 0 3rem;
+  }
+  .subNav{
+    padding: 0 3rem;
+  }
 }
 
 
