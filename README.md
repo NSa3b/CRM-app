@@ -1,4 +1,4 @@
-# CRMApp
+# CRM App
 
 ## This is a CRM pipeline management application
 
