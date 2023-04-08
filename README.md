@@ -1,8 +1,14 @@
 # CRMApp
 
+## This is a CRM pipeline management application
+
+The application preview contacts data and enable users to manage Deals in multiple pipeline stages.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
-## Development server
+## Development server(setup)
+
+### To install Angular Material
+Run `ng add @angular/material`
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
