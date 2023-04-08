@@ -84,5 +84,14 @@ export class DealsComponent implements OnInit {
     this.showDeletBtn = true;
   }
 
+  searchResult(deal:Deal){
+    if(this.searchValue =="" || deal.email.toLowerCase().includes(this.searchValue) || deal.first_name.toLowerCase().includes(this.searchValue)|| deal.last_name.toLowerCase().includes(this.searchValue)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
 
 }

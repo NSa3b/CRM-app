@@ -78,7 +78,7 @@
             </div>
             <div cdkDropList [cdkDropListData]="pvDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
                 <div *ngFor="let deal of pvDeals">
-                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                    <div *ngIf='searchResult(deal)'>
                         <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
                         [deal]="deal"></app-client-card>
                     </div>
@@ -106,7 +106,7 @@
             </div>
             <div cdkDropList [cdkDropListData]="FocusDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
                 <div *ngFor="let deal of FocusDeals" >
-                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                    <div *ngIf='searchResult(deal)'>
                         <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
                         [deal]="deal"></app-client-card>
                     </div>
@@ -134,7 +134,7 @@
             </div>
             <div cdkDropList [cdkDropListData]="ContDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
                 <div *ngFor="let deal of ContDeals" >
-                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                    <div *ngIf='searchResult(deal)'>
                         <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
                         [deal]="deal"></app-client-card>
                     </div>
@@ -161,7 +161,7 @@
             </div>
             <div cdkDropList [cdkDropListData]="OfferDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
                 <div *ngFor="let deal of OfferDeals" >
-                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                    <div *ngIf='searchResult(deal)'>
                         <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
                         [deal]="deal"></app-client-card>
                     </div>
@@ -189,7 +189,7 @@
             </div>
             <div cdkDropList [cdkDropListData]="ReadyDeals" class="Deal-list" (cdkDropListDropped)="moveDeal($event)">
                 <div *ngFor="let deal of ReadyDeals" >
-                    <div *ngIf='searchValue=="" || deal.email.toLowerCase().includes(searchValue) || deal.first_name.toLowerCase().includes(searchValue)|| deal.last_name.toLowerCase().includes(searchValue)'>
+                    <div *ngIf='searchResult(deal)'>
                         <app-client-card draggable="true" (dragstart)="onDragStart()" cdkDrag class="Deal-box"
                         [deal]="deal"></app-client-card>
                     </div>
