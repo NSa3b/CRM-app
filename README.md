@@ -3,6 +3,7 @@
 ## This is a CRM pipeline management application
 
 The application preview contacts data and enable users to manage Deals in multiple pipeline stages.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Development server(setup)
